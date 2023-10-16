@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Codes {
+  code Int     @id() @default(autoincrement())
+  name String?
+}
+
+model Realeases {
+  id             Int     @id() @default(autoincrement())
+  data           String?
+  codigo         String?
+  descricao      String?
+  formpgm        String?
+  tipo           String?
+  valor          Float?
+  pago_banco     Int?
+  valor_detalhes String?
+  usersId        Int?
+  Users          Users?  @relation(fields: [usersId], references: [id])
+}
+
+model Users {
+  id        Int         @id() @default(autoincrement())
+  usuario   String?
+  senha     String?
+  Realeases Realeases[]
+}
