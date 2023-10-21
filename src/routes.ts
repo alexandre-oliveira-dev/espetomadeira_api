@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { RealeasesResolver } from './releases/realeases.resolver';
+import { UsersResolver } from './users/users.resolver';
 
 export const route = Router();
 
-route.get('/Users', new RealeasesResolver().findMany);
+route.post('/Users', new UsersResolver().create);
