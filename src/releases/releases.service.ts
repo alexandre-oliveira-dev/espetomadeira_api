@@ -1,4 +1,4 @@
-import { prismaClient } from 'src/prisma/prismaClient';
+import { prismaClient } from "./prisma/prismaClient";
 
 export class RealeasesService {
   async findAll() {

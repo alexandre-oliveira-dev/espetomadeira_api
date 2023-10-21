@@ -9,6 +9,6 @@ function app() {
     express.json()(req, res, next);
   });
   app.use(route);
-  app.listen(3000);
+  app.listen(3030);
 }
 app();
