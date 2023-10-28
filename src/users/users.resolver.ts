@@ -6,18 +6,21 @@ const service = new UsersService()
 
 export class UsersResolver{
 
-    async create(req:Request, res: Response,) {
-        
+    async create(req: Request, res: Response,) {
         const {data}:Prisma.UsersCreateArgs = req.body
-        console.log("🚀 ~ file: users.resolver.ts:12 ~ UsersResolver ~ create ~ data:", data)
-
-        try {
-            await service.create({
-                data
-            })
-        return res.statusMessage = 'Usuario criado com sucesso'
-        } catch {
-            return res.status(500)
-      }
+        const user = await service.create({
+            data
+        })
+        return res.json(user).status(200)
+    }
+    async findMany(req: Request, res: Response,) {
+        const {...args}: Prisma.UsersFindManyArgs = req.body
+        const users = await service.findMany(args)
+        return res.json(users).status(200)
+    }
+    async findUnique(req: Request, res: Response,) {
+        const {id}: Prisma.UsersCreateInput = req.query
+        const users = await service.findUnique({id})
+        return res.json(users).status(200)
     }
 }

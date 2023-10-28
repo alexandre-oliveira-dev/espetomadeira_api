@@ -8,12 +8,12 @@ datasource db {
 }
 
 model Codes {
-  code Int     @id() @default(autoincrement())
+  code String  @id() @default(uuid())
   name String?
 }
 
 model Realeases {
-  id             Int     @id() @default(autoincrement())
+  id             String  @id() @default(uuid())
   data           String?
   codigo         String?
   descricao      String?
@@ -22,12 +22,12 @@ model Realeases {
   valor          Float?
   pago_banco     Int?
   valor_detalhes String?
-  usersId        Int?
-  Users          Users?  @relation(fields: [usersId], references: [id])
+  usersId        String?
+  Users          Users?  @relation(fields: [usersId], references: [id] , onDelete:Cascade)
 }
 
 model Users {
-  id        Int         @id() @default(autoincrement())
+  id        String      @id() @default(uuid())
   usuario   String?
   senha     String?
   Realeases Realeases[]
