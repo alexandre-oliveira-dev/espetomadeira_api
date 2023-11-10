@@ -7,3 +7,6 @@ export const route = Router();
 route.post('/Users', new UsersResolver().create);
 route.get('/Users', new UsersResolver().findMany);
 route.get('/User', new UsersResolver().findUnique);
+route.post('/Realeases', new RealeasesResolver().create);
+route.get('/Realeases', new RealeasesResolver().findMany);
+route.get('/Realease', new RealeasesResolver().findUnique);

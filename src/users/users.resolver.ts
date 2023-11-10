@@ -19,8 +19,8 @@ export class UsersResolver{
         return res.json(users).status(200)
     }
     async findUnique(req: Request, res: Response,) {
-        const {id}: Prisma.UsersCreateInput = req.query
-        const users = await service.findUnique({id})
+        const {...args}: Prisma.UsersFindUniqueArgs = req.body
+        const users = await service.findUnique(args)
         return res.json(users).status(200)
     }
 }

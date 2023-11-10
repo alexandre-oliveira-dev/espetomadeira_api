@@ -13,15 +13,9 @@ export class UsersService{
             }
         })
     }
-    async findUnique({id}:Prisma.UsersCreateInput) {
+    async findUnique({...args}:Prisma.UsersFindUniqueArgs) {
         return await prismaClient.users.findUniqueOrThrow({
-            where: {
-              id
-            },
-            select: {
-                id: true,
-                usuario:true
-            }
+           ...args
         })
     }
 
