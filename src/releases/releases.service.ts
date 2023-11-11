@@ -2,8 +2,10 @@ import { Prisma } from "@prisma/client";
 import { prismaClient } from "../prisma/prismaClient";
 
 export class RealeasesService {
-  async findAll(args: Prisma.RealeasesFindManyArgs) {
-    return await prismaClient.realeases.findMany(args);
+  async findAll({where}: Prisma.RealeasesFindManyArgs) {
+    return await prismaClient.realeases.findMany({
+      where
+    });
   }
 
   async findUnique({where}:Prisma.RealeasesFindUniqueArgs) {
