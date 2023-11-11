@@ -4,7 +4,8 @@ import { prismaClient } from "../prisma/prismaClient";
 export class RealeasesService {
   async findAll({where}: Prisma.RealeasesFindManyArgs) {
     return await prismaClient.realeases.findMany({
-      where
+      where,
+      orderBy: {id: 'asc'}
     });
   }
 
@@ -16,5 +17,13 @@ export class RealeasesService {
 
   async create({data}: Prisma.RealeasesCreateArgs) {
     return await prismaClient.realeases.create({data})
+  }
+  async update({data}: Prisma.RealeasesUpdateArgs, id:string) {
+    return await prismaClient.realeases.update({
+      where: {
+        id
+      },
+      data
+    })
   }
 }

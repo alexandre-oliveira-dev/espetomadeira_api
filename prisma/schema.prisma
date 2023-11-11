@@ -1,47 +1,65 @@
-  generator client {
-    provider = "prisma-client-js"
-  }
-
-  datasource db {
-    provider = "postgresql"
-    url      = env("DATABASE_URL")
-  }
-
-
-  enum ReleaseType {
-    entrada
-    saida
+generator client {
+  provider = "prisma-client-js"
 }
-  enum PaymentMethod {
-    pix
-    boleto
-    credtCard
-    debitCard
-    money
-  }
 
-  model Codes {
-    code String  @id() @default(uuid())
-    name String?
-  }
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
 
-  model Realeases {
-    id             String  @id() @default(uuid())
-    data           String?
-    codigo         String?
-    descricao      String?
-    formpgm        String?
-    tipo           String?
-    valor          Float?
-    pago_banco     Int?
-    valor_detalhes String?
-    usersId        String?
-    Users          Users?  @relation(fields: [usersId], references: [id] , onDelete:Cascade)
-  }
+enum ReleaseType {
+  entrada
+  saida
+}
 
-  model Users {
-    id        String      @id() @default(uuid())
-    usuario   String?
-    senha     String?
-    Realeases Realeases[]
-  }
+enum Status {
+  emAberto
+  pago
+}
+
+enum PaymentMethod {
+  pix
+  boleto
+  credtCard
+  debitCard
+  money
+}
+
+model Codes {
+  code String  @id() @default(uuid())
+  name String?
+}
+
+model Realeases {
+  id             String  @id() @default(uuid())
+  data           String?
+  codigo         String?
+  descricao      String?
+  formpgm        String?
+  tipo           String?
+  valor          Float?
+  pago_banco     Int?
+  valor_detalhes String?
+  usersId        String?
+  status         String? @default("emAberto") 
+  Users          Users?  @relation(fields: [usersId], references: [id], onDelete: Cascade)
+}
+
+model Users {
+  id        String      @id() @default(uuid())
+  usuario   String?
+  senha     String?
+  Realeases Realeases[]
+}
+
+model BankBalance {
+  id         String   @id() @default(uuid())
+  balance    Int      @default(0)
+  updated_at DateTime @default(now())
+}
+
+model Wallet {
+  id         String   @id() @default(uuid())
+  balance    Int      @default(0)
+  updated_at DateTime @default(now())
+}

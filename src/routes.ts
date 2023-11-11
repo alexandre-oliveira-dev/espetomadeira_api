@@ -8,5 +8,6 @@ route.post('/Users', new UsersResolver().create);
 route.get('/Users', new UsersResolver().findMany);
 route.get('/User', new UsersResolver().findUnique);
 route.post('/Realeases', new RealeasesResolver().create);
-route.get('/Realeases', new RealeasesResolver().findMany);
-route.get('/Realease', new RealeasesResolver().findUnique);
+route.post('/findManyRealeases', new RealeasesResolver().findMany);
+route.post('/findUniqueRealeases', new RealeasesResolver().findUnique);
+route.put('/updateRealeases/:id', new RealeasesResolver().update);
