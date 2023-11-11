@@ -7,6 +7,19 @@
     url      = env("DATABASE_URL")
   }
 
+
+  enum ReleaseType {
+    entrada
+    saida
+}
+  enum PaymentMethod {
+    pix
+    boleto
+    credtCard
+    debitCard
+    money
+  }
+
   model Codes {
     code String  @id() @default(uuid())
     name String?
@@ -18,7 +31,7 @@
     codigo         String?
     descricao      String?
     formpgm        String?
-    tipo           String?
+    tipo           ReleaseType?
     valor          Float?
     pago_banco     Int?
     valor_detalhes String?
