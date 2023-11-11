@@ -11,9 +11,9 @@ function app() {
   });
   app.use(cors({origin:'*'}))
   app.use(route);
-  app.listen(3333, ()=> console.log('api online'));
-/*   app.listen(process.env.PORT, ()=> console.log('api online'));
- */}
+  /*   app.listen(3333, ()=> console.log('api online'));*/
+  app.listen(process.env.PORT, ()=> console.log('api online'));
+ }
 app();
 
 
