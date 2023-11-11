@@ -31,7 +31,7 @@
     codigo         String?
     descricao      String?
     formpgm        String?
-    tipo           ReleaseType?
+    tipo           String?
     valor          Float?
     pago_banco     Int?
     valor_detalhes String?
