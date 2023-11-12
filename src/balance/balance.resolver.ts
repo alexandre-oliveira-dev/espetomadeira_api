@@ -26,7 +26,7 @@ export class BalanceResolver {
 
   async findMany(req: Request, res: Response) {
     const { data } = req.body;
-    const response = await service.findMany({ where: data ?? {} });
+    const response = await service.findMany({ where: data });
     return res.json(response);
   }
 }
