@@ -1,0 +1,7 @@
+-- AlterTable
+ALTER TABLE "BankBalance" ALTER COLUMN "balance" SET DEFAULT '0',
+ALTER COLUMN "balance" SET DATA TYPE TEXT;
+
+-- AlterTable
+ALTER TABLE "Wallet" ALTER COLUMN "balance" SET DEFAULT '0',
+ALTER COLUMN "balance" SET DATA TYPE TEXT;

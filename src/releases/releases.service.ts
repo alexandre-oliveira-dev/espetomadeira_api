@@ -1,29 +1,31 @@
-import { Prisma } from "@prisma/client";
-import { prismaClient } from "../prisma/prismaClient";
+import { Prisma } from '@prisma/client';
+import { prismaClient } from '../prisma/prismaClient';
 
 export class RealeasesService {
-  async findAll({where}: Prisma.RealeasesFindManyArgs) {
+  async findAll({ where }: Prisma.RealeasesFindManyArgs) {
     return await prismaClient.realeases.findMany({
       where,
-      orderBy: {id: 'asc'}
+      orderBy: { id: 'asc' },
     });
   }
 
-  async findUnique({where}:Prisma.RealeasesFindUniqueArgs) {
+  async findUnique({ where }: Prisma.RealeasesFindUniqueArgs) {
     return await prismaClient.realeases.findUnique({
-      where
-    })
+      where,
+    });
   }
 
-  async create({data}: Prisma.RealeasesCreateArgs) {
-    return await prismaClient.realeases.create({data})
+  async create({ data }: Prisma.RealeasesCreateArgs) {
+    return await prismaClient.realeases.create({ data });
   }
-  async update({data}: Prisma.RealeasesUpdateArgs, id:string) {
+  async update(id: string) {
     return await prismaClient.realeases.update({
       where: {
-        id
+        id,
       },
-      data
-    })
+      data: {
+        status: { set: 'pago' },
+      },
+    });
   }
 }

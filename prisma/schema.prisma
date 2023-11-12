@@ -54,12 +54,12 @@ model Users {
 
 model BankBalance {
   id         String   @id() @default(uuid())
-  balance    Int      @default(0)
+  balance    String      @default("0")
   updated_at DateTime @default(now())
 }
 
 model Wallet {
   id         String   @id() @default(uuid())
-  balance    Int      @default(0)
+  balance    String      @default("0")
   updated_at DateTime @default(now())
 }
