@@ -23,8 +23,27 @@ export class WalletResolver {
       res.json(err).status(500);
     }
   }
-
   async findMany(req: Request, res: Response) {
+    try {
+      const { data } = req.body;
+
+      // Certifique-se de que 'service' e 'findMany' estão definidos
+      if (service && typeof service.findAll === 'function') {
+        const response = await service.findAll({ where: data });
+        return res.json(response);
+      } else {
+        // Trate o caso em que 'service' ou 'findMany' são indefinidos
+        return res
+          .status(500)
+          .json({ error: 'Service or findMany method is undefined' });
+      }
+    } catch (err) {
+      console.error('errorrr', err);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+  }
+
+  /*   async findMany(req: Request, res: Response) {
     try {
       const { data } = req.body;
       const response = await service.findAll({ where: data });
@@ -32,5 +51,5 @@ export class WalletResolver {
     } catch (err) {
       return console.log('errorrr', err);
     }
-  }
+  } */
 }
