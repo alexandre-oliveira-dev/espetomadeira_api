@@ -5,7 +5,7 @@ export class RealeasesService {
   async findAll({ where }: Prisma.RealeasesFindManyArgs) {
     return await prismaClient.realeases.findMany({
       where,
-      orderBy: { id: 'asc' },
+      orderBy: { created_at: 'desc' },
     });
   }
 

@@ -42,6 +42,7 @@ model Realeases {
   valor_detalhes String?
   usersId        String?
   status         String? @default("emAberto") 
+  created_at     DateTime @default(now())
   Users          Users?  @relation(fields: [usersId], references: [id], onDelete: Cascade)
 }
 
