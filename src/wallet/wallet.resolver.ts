@@ -27,7 +27,7 @@ export class WalletResolver {
   async findMany(req: Request, res: Response) {
     try {
       const { data } = req.body;
-      const response = await service.findMany({ where: data });
+      const response = await service.findAll({ where: data });
       return res.json(response);
     } catch (err) {
       return console.log('errorrr', err);

@@ -18,7 +18,7 @@ export class RealeasesResolver {
   }
   async findUnique(_req: Request, res: Response) {
     const { data } = _req.body;
-    const response = await service.findAll({ where: data });
+    const response = await service.findUnique({ where: data });
     return res.json(response).status(200);
   }
 

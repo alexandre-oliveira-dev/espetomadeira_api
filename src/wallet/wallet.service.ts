@@ -7,7 +7,7 @@ export class WalletService {
     return await prisma.wallet.create({ data });
   }
 
-  async findMany({ where }: Prisma.WalletFindManyArgs) {
+  async findAll({ where }: Prisma.WalletFindManyArgs) {
     return await prisma.wallet.findMany({
       where,
       orderBy: {
