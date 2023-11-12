@@ -34,7 +34,7 @@ export class WalletResolver {
       '🚀 ~ file: wallet.resolver.ts:33 ~ WalletResolver ~ findMany ~ data:',
       data,
     );
-    const response = await service.findMany({ where: data });
+    const response = await service.findMany({ where: data || {} });
     return res.json(response);
   }
 }
