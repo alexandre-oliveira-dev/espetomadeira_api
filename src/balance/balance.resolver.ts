@@ -26,7 +26,11 @@ export class BalanceResolver {
 
   async findMany(req: Request, res: Response) {
     const { data } = req.body;
-    const response = await service.findMany({ where: data });
-    return res.json(response);
+    try {
+      const response = await service.findMany({ where: data });
+      return res.json(response);
+    } catch (err) {
+      console.log('errrr', err);
+    }
   }
 }
