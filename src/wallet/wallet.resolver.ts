@@ -5,12 +5,8 @@ import { WalletService } from './wallet.service';
 const service = new WalletService();
 export class WalletResolver {
   async create(req: Request, res: Response) {
-    const { data }: Prisma.WalletCreateArgs = req.body;
-    console.log(
-      '🚀 ~ file: wallet.resolver.ts:9 ~ WalletResolver ~ create ~ data:',
-      data,
-    );
     try {
+      const { data }: Prisma.WalletCreateArgs = req.body;
       const response = await service.create({ data });
       return res.json(response);
     } catch (err) {
@@ -18,9 +14,9 @@ export class WalletResolver {
     }
   }
   async update(req: Request, res: Response) {
-    const { data } = req.body;
-    const { id } = req.params;
     try {
+      const { data } = req.body;
+      const { id } = req.params;
       const response = await service.update(data, id);
       return res.json(response);
     } catch (err) {
@@ -29,12 +25,12 @@ export class WalletResolver {
   }
 
   async findMany(req: Request, res: Response) {
-    const { data } = req.body;
-    console.log(
-      '🚀 ~ file: wallet.resolver.ts:33 ~ WalletResolver ~ findMany ~ data:',
-      data,
-    );
-    const response = await service.findMany({ where: data });
-    return res.json(response);
+    try {
+      const { data } = req.body;
+      const response = await service.findMany({ where: data });
+      return res.json(response);
+    } catch (err) {
+      return console.log('errorrr', err);
+    }
   }
 }
