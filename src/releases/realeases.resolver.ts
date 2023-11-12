@@ -7,6 +7,10 @@ export class RealeasesResolver {
   async findMany(req: Request, res: Response) {
     try {
       const { data } = req.body;
+      console.log(
+        '🚀 ~ file: realeases.resolver.ts:10 ~ RealeasesResolver ~ findMany ~ data:',
+        data,
+      );
 
       const response = await service.findAll({
         where: data,

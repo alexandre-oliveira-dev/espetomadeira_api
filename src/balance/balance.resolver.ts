@@ -26,6 +26,10 @@ export class BalanceResolver {
 
   async findMany(req: Request, res: Response) {
     const { data } = req.body;
+    console.log(
+      '🚀 ~ file: balance.resolver.ts:29 ~ BalanceResolver ~ findMany ~ data:',
+      data,
+    );
     try {
       const response = await service.findMany({ where: data });
       return res.json(response);
