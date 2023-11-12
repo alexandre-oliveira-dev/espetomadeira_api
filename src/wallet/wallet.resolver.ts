@@ -27,19 +27,12 @@ export class WalletResolver {
     try {
       const { data } = req.body;
 
-      // Certifique-se de que 'service' e 'findMany' estão definidos
-      if (service && typeof service.findAll === 'function') {
-        const response = await service.findAll({ where: data });
-        return res.json(response);
-      } else {
-        // Trate o caso em que 'service' ou 'findMany' são indefinidos
-        return res
-          .status(500)
-          .json({ error: 'Service or findMany method is undefined' });
-      }
+      const response = await service.findAll({
+        where: data,
+      });
+      return res.json(response).status(200);
     } catch (err) {
-      console.error('errorrr', err);
-      return res.status(500).json({ error: 'Internal Server Error' });
+      console.log('error findMany line 17', err);
     }
   }
 
