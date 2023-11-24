@@ -15,6 +15,6 @@
   },
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "build": "npx prisma generate"
+    "vercel-build": "npx prisma migrate deploy"
   }
 }
