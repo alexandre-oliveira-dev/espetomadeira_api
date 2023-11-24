@@ -10,10 +10,11 @@
     "nodemon": "^3.0.1",
     "prisma": "^5.4.2",
     "sucrase": "^3.34.0",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "vercel": "^32.5.6"
   },
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "build": "npx prisma generate && next build"
+    "build": "npx prisma generate"
   }
 }
