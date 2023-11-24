@@ -14,7 +14,6 @@
     "vercel": "^32.5.6"
   },
   "scripts": {
-    "dev": "nodemon src/index.ts",
-    "vercel-build": "npx prisma migrate deploy"
+    "dev": "nodemon src/index.ts"
   }
 }
