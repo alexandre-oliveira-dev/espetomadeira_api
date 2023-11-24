@@ -13,7 +13,7 @@
     "typescript": "^5.0.4"
   },
   "scripts": {
-    "dev": " npx prisma generate && nodemon src/index.ts",
-    "build": "prisma generate && next build"
+    "dev": "nodemon src/index.ts",
+    "build": "npx prisma generate && next build"
   }
 }
